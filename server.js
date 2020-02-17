@@ -21,18 +21,18 @@ app.get("/stats", (req, res) => {
 })
 
 app.get("/api/workouts", (req, res) => {
-
+  db.find().then(workouts => res.json(workouts))
 })
 
 app.post("/api/workouts", ({ body }, res) => {
-
+  db.create(body).then(workouts = res.json(workouts))
 })
 
-app.put("/api/workouts/:id"), ({ body, params }, res) => {
-
-}
+app.put("/api/workouts/:id", ({ body, params }, res) => {
+  db.findByIdAndUpdate(params.id, {$push: {exercises:body}}).then(workouts => res.json(workouts))
+})
 
 app.get("/api/workouts/range", (req, res) => {
-
+  db.find().then(workouts => res.json(workouts))
 })
 
